@@ -17,7 +17,10 @@ rules:
 1. the blocks can only switch places with the empty block
 2. Blocks can only switch with the empty block if it is right next
    to them.
-3. 
+3. game ends when the board is in this format: 
+    [1],[2],[3],
+    [4],[5],[6],
+    [7],[8],[ ]
 """
 
 MBL = 9 # 0 index Maximum Board Length
@@ -34,7 +37,7 @@ class Board(object):
                 row.append(Tile(x,y,random_nums.pop(0)))
             board_rows.append(row)
         return board_rows
-
+       
     @staticmethod
     def shuffle(tile1,tile2):
         pass
@@ -62,7 +65,11 @@ class Tile:
         self.num = num
 
     def __repr__(self):
-        return "[{}]".format(self.num)
+        if self.num != 1:
+            return "[{}]".format(self.num)
+        else:
+            return "[ ]"
+    
 
 
 
