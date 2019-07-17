@@ -77,8 +77,17 @@ class Board(object):
     def start_game(self):
         pass
     
-    def end_game(self):
-        pass
+    def finished_game(self):
+        ordered_tile_nums = [num for num in range(MBL)]
+        finished_board = [[ordered_tile_nums.pop(0) for x in range(MBL//3) ] for y in range(MBL//3)]
+        for y in range(MBL//3):
+            for x in range(MBL//3):
+                tile = self.board[y][x]
+                correct_num = finished_board[y][x]
+                if tile.num != correct_num:
+                    return False
+        return True
+
 
     def print_board(self):
         print('')

@@ -61,6 +61,21 @@ class Test_Board(unittest.TestCase):
         possible_moves = set([(0,1),(2,1),(1,0),(1,2)])
         self.assertEqual(result,possible_moves)
 
+    @patch.object(Board,'__init__', lambda x:None)
+    def test_finished_game(self):
+        b = Board()
+        ordered_tile_nums = [num for num in range(MBL)]
+        test_board = []
+        for y in range(MBL//3):
+            row = []
+            for x in range(MBL//3):
+                Tile = MagicMock()
+                Tile.num = ordered_tile_nums.pop(0)
+                row.append(Tile)
+            test_board.append(row)
+        b.board = test_board
+        ending_game = b.finished_game()
+        self.assertEqual(ending_game, True)
 
 
 if __name__ == "__main__":
