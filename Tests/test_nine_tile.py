@@ -78,5 +78,7 @@ class Test_Board(unittest.TestCase):
         self.assertEqual(ending_game, True)
 
 
+    def test_shuffle(self):
+        pass
 if __name__ == "__main__":
     unittest.main()
