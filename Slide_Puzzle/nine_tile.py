@@ -154,7 +154,7 @@ def main():
             elif user_input in possible_moves:
                 valid_input = True
                 b.shuffle(possible_moves[user_input])
-                end_game = b.finished_game(user_end_game=True)
+                end_game = b.finished_game()
             else:
                 valid_input = False
                 user_input = input("Please enter a valid number: (or enter 'end' to end game)\n")
