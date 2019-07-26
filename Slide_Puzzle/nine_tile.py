@@ -96,7 +96,7 @@ class Board(object):
         """
         if user_end_game == True:
             return True
-        else:    
+        else:   
             ordered_tile_nums = [num for num in range(MBL)]
             finished_board = [[ordered_tile_nums.pop(0) for x in range(MBL//3) ] for y in range(MBL//3)]
             for y in range(MBL//3):
@@ -154,6 +154,7 @@ def main():
             elif user_input in possible_moves:
                 valid_input = True
                 b.shuffle(possible_moves[user_input])
+                end_game = b.finished_game(user_end_game=True)
             else:
                 valid_input = False
                 user_input = input("Please enter a valid number: (or enter 'end' to end game)\n")
