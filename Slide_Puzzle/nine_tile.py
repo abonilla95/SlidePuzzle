@@ -97,7 +97,9 @@ class Board(object):
         if user_end_game == True:
             return True
         else:   
-            ordered_tile_nums = [num for num in range(MBL)]
+            ordered_tile_nums = [n for n in range(MBL)]
+            first_num = ordered_tile_nums.pop(0)
+            ordered_tile_nums.append(first_num)
             finished_board = [[ordered_tile_nums.pop(0) for x in range(MBL//3) ] for y in range(MBL//3)]
             for y in range(MBL//3):
                 for x in range(MBL//3):
@@ -110,7 +112,7 @@ class Board(object):
     def print_board(self):
         print('')
         for y in range(MBL//3):
-            print(" ".join([str(self.board[x][y]) for x in range(MBL//3)]))
+            print(" ".join([str(self.board[y][x]) for x in range(MBL//3)]))
         print("")
 
 class Tile:
@@ -155,9 +157,10 @@ def main():
                 valid_input = True
                 b.shuffle(possible_moves[user_input])
                 end_game = b.finished_game()
+                print("ended_game: {}".format(end_game))
             else:
                 valid_input = False
-                user_input = input("Please enter a valid number: (or enter 'end' to end game)\n")
+                user_input = input("Please enter a valid number: (or enter 'quit' to end game)\n")
 
 
             
